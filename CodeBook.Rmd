@@ -1,0 +1,168 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+The data is formthe combined test and training sets of data
+
+Only variables or features representing mean and standard deviation values from the test and training data are contained in the data_mean_std_1 and average data sets. 
+
+Additionally the feature names were changed to all lower case and () was removed from the names
+
+The average data set represents the average of each activuty for each subject.
+
+
+
+More details on Feature Selection adapted form the feature infor provided withthe orginal data 
+=================
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are: 
+
+mean(): Mean value
+std(): Standard deviation
+
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal 
+kurtosis(): kurtosis of the frequency domain signal 
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+
+The complete list of variables are:
+[1] "subject"                       "activity"                      "tbodyacc-mean-x"              
+ [4] "tbodyacc-mean-y"               "tbodyacc-mean-z"               "tbodyacc-std-x"               
+ [7] "tbodyacc-std-y"                "tbodyacc-std-z"                "tgravityacc-mean-x"           
+[10] "tgravityacc-mean-y"            "tgravityacc-mean-z"            "tgravityacc-std-x"            
+[13] "tgravityacc-std-y"             "tgravityacc-std-z"             "tbodyaccjerk-mean-x"          
+[16] "tbodyaccjerk-mean-y"           "tbodyaccjerk-mean-z"           "tbodyaccjerk-std-x"           
+[19] "tbodyaccjerk-std-y"            "tbodyaccjerk-std-z"            "tbodygyro-mean-x"             
+[22] "tbodygyro-mean-y"              "tbodygyro-mean-z"              "tbodygyro-std-x"              
+[25] "tbodygyro-std-y"               "tbodygyro-std-z"               "tbodygyrojerk-mean-x"         
+[28] "tbodygyrojerk-mean-y"          "tbodygyrojerk-mean-z"          "tbodygyrojerk-std-x"          
+[31] "tbodygyrojerk-std-y"           "tbodygyrojerk-std-z"           "tbodyaccmag-mean"             
+[34] "tbodyaccmag-std"               "tgravityaccmag-mean"           "tgravityaccmag-std"           
+[37] "tbodyaccjerkmag-mean"          "tbodyaccjerkmag-std"           "tbodygyromag-mean"            
+[40] "tbodygyromag-std"              "tbodygyrojerkmag-mean"         "tbodygyrojerkmag-std"         
+[43] "fbodyacc-mean-x"               "fbodyacc-mean-y"               "fbodyacc-mean-z"              
+[46] "fbodyacc-std-x"                "fbodyacc-std-y"                "fbodyacc-std-z"               
+[49] "fbodyacc-meanfreq-x"           "fbodyacc-meanfreq-y"           "fbodyacc-meanfreq-z"          
+[52] "fbodyaccjerk-mean-x"           "fbodyaccjerk-mean-y"           "fbodyaccjerk-mean-z"          
+[55] "fbodyaccjerk-std-x"            "fbodyaccjerk-std-y"            "fbodyaccjerk-std-z"           
+[58] "fbodyaccjerk-meanfreq-x"       "fbodyaccjerk-meanfreq-y"       "fbodyaccjerk-meanfreq-z"      
+[61] "fbodygyro-mean-x"              "fbodygyro-mean-y"              "fbodygyro-mean-z"             
+[64] "fbodygyro-std-x"               "fbodygyro-std-y"               "fbodygyro-std-z"              
+[67] "fbodygyro-meanfreq-x"          "fbodygyro-meanfreq-y"          "fbodygyro-meanfreq-z"         
+[70] "fbodyaccmag-mean"              "fbodyaccmag-std"               "fbodyaccmag-meanfreq"         
+[73] "fbodybodyaccjerkmag-mean"      "fbodybodyaccjerkmag-std"       "fbodybodyaccjerkmag-meanfreq" 
+[76] "fbodybodygyromag-mean"         "fbodybodygyromag-std"          "fbodybodygyromag-meanfreq"    
+[79] "fbodybodygyrojerkmag-mean"     "fbodybodygyrojerkmag-std"      "fbodybodygyrojerkmag-meanfreq"
+
+The r code is included below
+```{r}
+#set working directory
+setwd("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset")
+
+# Load test and training files
+# Load test Data into test data frame
+test <- read.table("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/X_test.txt", quote="\"", comment.char="")
+# load subject list for test
+subject_test  <- read.table("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/subject_test.txt", quote="\"", comment.char="")
+# load y data (activity list) for test
+activity_test <- read.table("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/y_test.txt", quote="\"", comment.char="")
+
+
+
+# Load and combine trainign data set
+#loade tarining data into data 
+train <- read.table("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/X_train.txt", quote="\"", comment.char="")
+
+# Load subject as subject_train
+subject_train <- read.table("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/subject_train.txt", quote="\"", comment.char="")
+
+activity_train <- read.table("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/y_train.txt", quote="\"", comment.char="")
+
+# combine test and training files
+data <- rbind(test,train)
+
+# load features(cloumn names)
+features <- read_table2("C:/Users/jmcnamara/Desktop/Coursera/Course 3/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/features.txt",col_names = FALSE)
+# creaest list of column names and transpose it
+feature_names <- t(features[,2])
+# add column names to test
+colnames(data) <- c(feature_names)
+# add column nmes to test 
+#create vector with colum,ns that have mean and standard deviation values in the title
+mean_std <- grep("mean|std", c(feature_names), value = FALSE)
+#subset dataframe to only include thesecolumns
+library(dplyr)
+data_mean_std <- data[,mean_std]
+
+#combine subject and activity for test and training data
+activity <- rbind(activity_test,activity_train)
+subject <- rbind(subject_test,subject_train)
+
+#combine activty and subject with data to create a labeled data set
+
+data_mean_std_1 <- cbind(subject,activity,data_mean_std)
+colnames(data_mean_std_1)[c(1,2)] <- c("subject","activity")
+
+#reclassify activity column into a factor and add factor labels 
+ 
+data_mean_std_1$activity <- factor(data_mean_std_1$activity, labels=c("Walking","Walking_UpStairs","Walking_DownStairs", "Sitting", "Standing","Laying"))
+#remove() from column names and make all letters lower case
+colnames(data_mean_std_1) <- tolower(sub("\\()","",colnames(data_mean_std_1)))
+
+# create average for each subject and each activity called 
+average <- data_mean_std_1 %>% group_by(subject,activity) %>% summarise_all(funs(mean))
+```
+
+
