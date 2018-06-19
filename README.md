@@ -15,12 +15,11 @@ organizing of the data set.
 
 
 
-data_mean_std.csv - tidy data set for all mean and standard
-deviation data
 
 
 
-average.csv - data for each subject averaged by activity
+
+average  - data for each subject averaged by activity
 
 
 
