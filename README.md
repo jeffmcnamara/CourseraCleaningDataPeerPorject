@@ -19,7 +19,7 @@ organizing of the data set.
 
 
 
-average  - data for each subject averaged by activity
+average.txt  - data for each subject averaged by activity
 
 
 
